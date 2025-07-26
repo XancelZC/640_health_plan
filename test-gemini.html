@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>素食女生健康改善全方案</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式 */
+        :root {
+            --primary-green: #66BB6A; /* 柔和绿色 */
+            --light-green: #A5D6A7;
+            --background-beige: #FCF8F3; /* 米色背景 */
+            --text-dark-gray: #333333; /* 深灰色文本 */
+            --light-gray: #EEEEEE;
+            --border-color: #DDDDDD;
+            --shadow-light: rgba(0, 0, 0, 0.05);
+            --shadow-medium: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark-gray);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-beige);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: #fff;
+            box-shadow: 0 5px 20px var(--shadow-medium);
+            margin: 25px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden; /* Ensure no overflow for shadows */
+        }
+
+        /* 菜单区域 */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            padding: 30px 20px;
+            background-color: #F8F8F8;
+            border-right: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 8px var(--shadow-light);
+        }
+
+        .sidebar h3 {
+            color: var(--primary-green);
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--light-green);
+            padding-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: var(--text-dark-gray);
+            font-size: 1.05em;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: var(--light-green);
+            color: #fff;
+        }
+        .sidebar ul li a.active {
+            background-color: var(--primary-green);
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .sidebar ul li ul {
+            margin-top: 5px;
+            margin-left: 15px;
+            border-left: 2px solid var(--light-gray);
+        }
+
+        .sidebar ul li ul li a {
+            padding: 8px 10px;
+            font-size: 0.95em;
+            color: #555;
+        }
+        .sidebar ul li ul li a.active {
+            background-color: var(--light-green);
+            color: #fff;
+        }
+
+        /* 主内容区域 */
+        .main-content-wrapper {
+            flex-grow: 1;
+            padding: 30px 40px;
+            overflow-y: auto;
+            max-height: 100vh; /* Make sure main content scrolls */
+        }
+
+        .view-toggle {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .view-toggle button {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 0 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px var(--shadow-light);
+        }
+
+        .view-toggle button:hover {
+            background-color: #5cb85c;
+            transform: translateY(-2px);
+        }
+
+        .view-toggle button.active {
+            background-color: #388E3C; /* Darker green when active */
+            box-shadow: 0 2px 5px var(--shadow-medium) inset;
+        }
+
+        h1 {
+            color: var(--primary-green);
+            text-align: center;
+            margin-bottom: 35px;
+            font-size: 2.8em;
+            padding-bottom: 20px;
+            border-bottom: 4px solid var(--light-green);
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: var(--primary-green);
+            margin-top: 50px;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+            border-left: 8px solid var(--primary-green);
+            padding-left: 20px;
+            background-color: #E8F5E9;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #2980b9;
+            margin-top: 35px;
+            margin-bottom: 18px;
+            font-size: 1.7em;
+            border-bottom: 2px dashed var(--light-green);
+            padding-bottom: 10px;
+            font-weight: 500;
+        }
+
+        h4 {
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            list-style-type: disc;
+            margin-left: 30px;
+            margin-bottom: 18px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #444;
+            font-weight: 600;
+        }
+
+        /* 可展开/折叠部分 */
+        details {
+            background-color: #f9f9f9;
+            border: 1px solid var(--light-gray);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px var(--shadow-light);
+        }
+
+        summary {
+            font-size: 1.4em;
+            font-weight: 500;
+            padding: 15px 20px;
+            cursor: pointer;
+            outline: none;
+            color: var(--primary-green);
+            list-style: none; /* Hide default triangle */
+            position: relative;
+        }
+
+        summary::-webkit-details-marker {
+            display: none; /* Hide default triangle for WebKit browsers */
+        }
+
+        summary::before {
+            content: '+';
+            font-size: 1.2em;
+            position: absolute;
+            right: 20px;
+            transition: transform 0.3s ease;
+            color: var(--primary-green);
+        }
+
+        details[open] summary::before {
+            content: '-';
+            transform: rotate(0deg); /* No rotation for '-' */
+        }
+
+        details > div {
+            padding: 10px 20px 20px;
+            border-top: 1px solid var(--light-gray);
+            background-color: #fff;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        /* 食谱表格 */
+        .recipe-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .recipe-table th, .recipe-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .recipe-table th {
+            background-color: var(--light-green);
+            color: white;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .recipe-table tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        .recipe-table td ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 运动图示占位符 */
+        .exercise-illustration {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            width: 100%; /* Adjust as needed */
+            max-width: 300px; /* Max width for image */
+            height: auto;
+            border: 1px dashed var(--light-green);
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: #fdfdfd;
+            color: #999;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-green);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            text-decoration: none;
+            box-shadow: 0 4px 10px var(--shadow-medium);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 1000;
+            display: none; /* Hidden by default */
+        }
+
+        .back-to-top:hover {
+            background-color: #5cb85c;
+            transform: translateY(-3px);
+        }
+
+        /* 第一周计划执行页面样式 */
+        .first-week-plan {
+            display: none; /* Hidden by default */
+            padding-top: 20px;
+        }
+
+        .day-navigation {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .day-navigation button {
+            background-color: var(--light-gray);
+            color: var(--text-dark-gray);
+            border: 1px solid var(--border-color);
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .day-navigation button:hover {
+            background-color: var(--light-green);
+            color: white;
+        }
+
+        .day-navigation button.active {
+            background-color: var(--primary-green);
+            color: white;
+            font-weight: 500;
+        }
+
+        .daily-plan {
+            border: 1px solid var(--light-green);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #fafffa;
+            box-shadow: 0 2px 10px var(--shadow-light);
+        }
+
+        .daily-plan h3 {
+            color: var(--primary-green);
+            border-bottom: 2px solid var(--light-green);
+            margin-top: 0;
+            padding-bottom: 10px;
+        }
+
+        .daily-plan h4 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .task-list label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+            cursor: pointer;
+        }
+
+        .task-list input[type="checkbox"] {
+            margin-right: 12px;
+            min-width: 20px;
+            min-height: 20px;
+            accent-color: var(--primary-green); /* Checkbox color */
+            cursor: pointer;
+        }
+
+        .task-list label.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            margin-top: 20px;
+            height: 25px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px var(--shadow-light);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--primary-green);
+            border-radius: 10px;
+            text-align: center;
+            line-height: 25px;
+            color: white;
+            transition: width 0.5s ease-in-out;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .weekly-progress-summary {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            border: 1px dashed var(--primary-green);
+        }
+        .weekly-progress-summary h3 {
+             border-bottom: none;
+             color: var(--text-dark-gray);
+             margin-top: 0;
+             margin-bottom: 15px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+                margin: 15px;
+                box-shadow: none; /* Simpler look on smaller screens */
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 20px;
+                box-shadow: 0 2px 8px var(--shadow-light);
+            }
+
+            .main-content-wrapper {
+                padding: 25px;
+                max-height: none; /* Allow full height scrolling */
+            }
+
+            h1 {
+                font-size: 2em;
+                margin-bottom: 25px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+                padding-left: 15px;
+            }
+
+            h3 {
+                font-size: 1.4em;
+            }
+
+            summary {
+                font-size: 1.2em;
+            }
+
+            .recipe-table th, .recipe-table td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .recipe-table thead {
+                display: none; /* Hide table headers on small screens */
+            }
+
+            .recipe-table, .recipe-table tbody, .recipe-table tr, .recipe-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .recipe-table tr {
+                margin-bottom: 15px;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .recipe-table td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+                border: none;
+            }
+
+            .recipe-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 45%;
+                padding-left: 15px;
+                font-weight: bold;
+                text-align: left;
+                background-color: #f0f0f0;
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+            }
+            .sidebar h3 {
+                font-size: 1.4em;
+            }
+            .sidebar ul li a {
+                padding: 8px 10px;
+                font-size: 1em;
+            }
+            .main-content-wrapper {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            summary {
+                font-size: 1.1em;
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>健康计划导航</h3>
+            <ul>
+                <li><a href="#section1">一、分阶段健康改善计划</a>
+                    <ul>
+                        <li><a href="#section1-1">第一阶段（1-2周）</a></li>
+                        <li><a href="#section1-2">第二阶段（3-4周）</a></li>
+                        <li><a href="#section1-3">第三阶段（5-8周）</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section2">二、素食者营养均衡指南</a>
+                    <ul>
+                        <li><a href="#section2-1">优质蛋白质来源</a></li>
+                        <li><a href="#section2-2">必需微量营养素</a></li>
+                        <li><a href="#section2-3">每日营养平衡餐盘</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section3">三、循序渐进的运动方案</a>
+                    <ul>
+                        <li><a href="#section3-1">唤醒期（1-2周）</a></li>
+                        <li><a href="#section3-2">启动期（3-4周）</a></li>
+                        <li><a href="#section3-3">发展期（5-8周）</a></li>
+                        <li><a href="#section3-4">进阶期（9-12周）</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section4">四、改善睡眠与作息方案</a>
+                    <ul>
+                        <li><a href="#section4-1">调整睡眠时间</a></li>
+                        <li><a href="#section4-2">创建理想睡眠环境</a></li>
+                        <li><a href="#section4-3">建立睡前放松仪式</a></li>
+                        <li><a href="#section4-4">调整日间活动</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section5">五、营养补充剂建议</a>
+                    <ul>
+                        <li><a href="#section5-1">基础补充剂</a></li>
+                        <li><a href="#section5-2">针对性补充剂</a></li>
+                        <li><a href="#section5-3">辅助调理补充品</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section6">六、实用小贴士与养成策略</a>
+                    <ul>
+                        <li><a href="#section6-1">建立可持续的小习惯</a></li>
+                        <li><a href="#section6-2">环境调整策略</a></li>
+                        <li><a href="#section6-3">心理支持和自我鼓励</a></li>
+                        <li><a href="#section6-4">常见挑战应对策略</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section7">七、具体一周食谱示例</a>
+                    <ul>
+                        <li><a href="#section7-1">第一周简易素食食谱</a></li>
+                        <li><a href="#section7-2">实用小零食选择</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section8">八、长期维持计划</a>
+                    <ul>
+                        <li><a href="#section8-1">定期评估与调整</a></li>
+                        <li><a href="#section8-2">习惯进阶与扩展</a></li>
+                        <li><a href="#section8-3">社交支持的重要性</a></li>
+                        <li><a href="#section8-4">长期健康愿景</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section9">总结</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content-wrapper">
+            <div class="view-toggle">
+                <button id="fullPlanBtn" class="active">完整计划</button>
+                <button id="firstWeekBtn">第一周计划执行</button>
+            </div>
+
+            <div id="fullPlanView" class="main-content">
+                <h1 id="top">素食女生健康改善全方案：循序渐进，科学养好身体</h1>
+
+                <p>针对一位身体底子不好、营养不良、作息混乱且不爱运动的素食女生，我设计了这套循序渐进的健康改善方案。考虑到她偶尔可以吃一点肉蛋，我们可以充分利用这一点，同时循序渐进地改善她的各项习惯和营养状况。</p>
+
+                <h2 id="section1">一、分阶段健康改善计划</h2>
+
+                <details open>
+                    <summary id="section1-1">第一阶段（1-2周）：初步调整，建立基础</summary>
+                    <div>
+                        <h4>1. 饮食调整起步：</h4>
+                        <ul>
+                            <li>保持素食为主，但不强制自己每天必须严格素食</li>
+                            <li>每天至少吃两顿饭，早上可以喝一杯温豆浆或加入坚果的植物奶</li>
+                            <li>添加1-2种容易消化的蛋白质来源（如豆腐、鸡蛋）</li>
+                            <li>每天摄入1-2份新鲜水果（如苹果、香蕉）</li>
+                        </ul>
+                        <h4>2. 作息小改变：</h4>
+                        <ul>
+                            <li>睡前1小时放下手机和电子设备</li>
+                            <li>尝试将睡觉时间提前15分钟（如果平时凌晨1点睡，尝试12:45睡）</li>
+                            <li>使用睡眠追踪app记录睡眠情况，建立自我意识</li>
+                        </ul>
+                        <h4>3. 基础补剂：</h4>
+                        <ul>
+                            <li>开始补充维生素B12（每天2.4μg）</li>
+                            <li>添加高品质的复合维生素，包含铁、钙和维生素D</li>
+                        </ul>
+                        <h4>4. 微小运动启动：</h4>
+                        <ul>
+                            <li>每天做5分钟轻度拉伸或床上瑜伽</li>
+                            <li>尝试在家中步行，如看视频时站立或走动，而非一直坐着或躺着</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section1-2">第二阶段（3-4周）：逐步提升，培养习惯</summary>
+                    <div>
+                        <h4>1. 饮食规律化：</h4>
+                        <ul>
+                            <li>建立"小份多餐"的饮食模式，每天吃3餐+1-2次小点心</li>
+                            <li>早餐尝试添加全谷物食品（如燕麦、藜麦）</li>
+                            <li>午餐增加深色蔬菜的摄入（如菠菜、芥蓝、西兰花）</li>
+                            <li>每周吃2-3次鸡蛋，补充优质蛋白和维生素B12</li>
+                        </ul>
+                        <h4>2. 作息进一步调整：</h4>
+                        <ul>
+                            <li>睡觉时间再提前15分钟</li>
+                            <li>设定固定的起床时间，即使睡得晚也尽量在同一时间起床</li>
+                            <li>开始尝试午间短暂休息（15分钟轻度闭目养神）</li>
+                        </ul>
+                        <h4>3. 营养补充：</h4>
+                        <ul>
+                            <li>添加植物性蛋白粉（如豌豆蛋白、大豆蛋白）</li>
+                            <li>考虑补充Omega-3脂肪酸（藻油来源）</li>
+                            <li>根据前两周的身体反应，调整维生素和矿物质的补充</li>
+                        </ul>
+                        <h4>4. 运动增强：</h4>
+                        <ul>
+                            <li>每天10分钟居家轻度运动（如床边扶墙半蹲、轻度椅子辅助运动）</li>
+                            <li>尝试在家中走路15分钟，可以边看喜欢的视频边走</li>
+                            <li>每天做简单的深呼吸和放松练习3-5分钟</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section1-3">第三阶段（5-8周）：稳步提升，形成系统</summary>
+                    <div>
+                        <h4>1. 饮食优化：</h4>
+                        <ul>
+                            <li>开始注重食物多样性，每天摄入12-15种不同的食物</li>
+                            <li>每周制定简单的膳食计划，预备易于保存的健康食品</li>
+                            <li>学习1-2道营养丰富的素食料理，让饮食更有吸引力</li>
+                            <li>有意识地增加富含铁的食物（如菠菜、芝麻、杏仁）</li>
+                        </ul>
+                        <h4>2. 作息规律化：</h4>
+                        <ul>
+                            <li>建立固定的睡前放松仪式（如泡脚、听舒缓音乐）</li>
+                            <li>尝试在23:00前入睡</li>
+                            <li>睡前避免食用刺激性食物和饮料（咖啡、浓茶、巧克力）</li>
+                        </ul>
+                        <h4>3. 营养系统化：</h4>
+                        <ul>
+                            <li>根据体检或血液检测结果（如有），针对性补充缺乏的营养素</li>
+                            <li>考虑添加益生菌，改善消化和免疫系统</li>
+                            <li>如有经期不适，可考虑适当的草本茶饮（如黑糖姜茶）</li>
+                        </ul>
+                        <h4>4. 运动体系化：</h4>
+                        <ul>
+                            <li>每天15-20分钟结构化居家运动</li>
+                            <li>尝试简单的力量训练（如俯卧撑的简化版、靠墙深蹲）</li>
+                            <li>考虑购买小型运动器材（如瑜伽垫、弹力带、小哑铃）</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <h2 id="section2">二、素食者营养均衡指南</h2>
+
+                <details open>
+                    <summary id="section2-1">1. 优质蛋白质来源</summary>
+                    <div>
+                        <p>对于能偶尔食用少量肉蛋的素食者，可以考虑以下蛋白质来源：</p>
+                        <h4>植物性蛋白：</h4>
+                        <ul>
+                            <li><strong>豆类及豆制品</strong>：豆腐、腐竹、豆腐干、豆浆（每天至少1-2份）</li>
+                            <li><strong>全谷物</strong>：藜麦、燕麦、糙米（含有完整氨基酸谱）</li>
+                            <li><strong>坚果种子</strong>：杏仁、核桃、南瓜子、芝麻、奇亚籽（每天一小把）</li>
+                            <li><strong>菌类</strong>：香菇、杏鮑菇、金针菇（富含蛋白质和B族维生素）</li>
+                        </ul>
+                        <h4>动物性蛋白（少量）：</h4>
+                        <ul>
+                            <li>每周2-3个鸡蛋（提供优质蛋白和维生素B12）</li>
+                            <li>偶尔少量的鱼或瘦肉（注重质量而非数量）</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section2-2">2. 必需微量营养素及其来源</summary>
+                    <div>
+                        <h4>铁质：</h4>
+                        <ul>
+                            <li>深色绿叶蔬菜（菠菜、油菜、芥蓝）</li>
+                            <li>豆类和豆制品</li>
+                            <li>芝麻、南瓜子</li>
+                            <li>枣、杏干等干果</li>
+                            <li><strong>提升吸收技巧</strong>：与富含维生素C的食物一起食用（如柑橘、青椒）</li>
+                        </ul>
+                        <h4>钙质：</h4>
+                        <ul>
+                            <li>钙强化豆奶</li>
+                            <li>深绿色蔬菜（西蓝花、油菜、芥蓝）</li>
+                            <li>芝麻酱、杏仁</li>
+                            <li>豆腐（用卤水制作的）</li>
+                            <li>紫菜和海藻类</li>
+                        </ul>
+                        <h4>维生素B12：</h4>
+                        <ul>
+                            <li>强化食品（如部分植物奶、营养酵母）</li>
+                            <li>鸡蛋（如果允许食用）</li>
+                            <li><strong>建议</strong>：素食者几乎必须补充B12，可选择舌下含服或口服补充剂</li>
+                        </ul>
+                        <h4>维生素D：</h4>
+                        <ul>
+                            <li>阳光暴露（每天15-20分钟温和日照）</li>
+                            <li>强化食品</li>
+                            <li><strong>建议</strong>：特别是宅在家中不经常出门的情况，更应补充维生素D</li>
+                        </ul>
+                        <h4>锌：</h4>
+                        <ul>
+                            <li>全谷物、豆类</li>
+                            <li>南瓜子、葵花籽、芝麻</li>
+                            <li>坚果类</li>
+                        </ul>
+                        <h4>Omega-3脂肪酸：</h4>
+                        <ul>
+                            <li>亚麻籽、奇亚籽、核桃</li>
+                            <li>藻油补充剂（素食DHA来源）</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section2-3">3. 每日营养平衡餐盘设计</summary>
+                    <div>
+                        <h4>早餐示例：</h4>
+                        <ul>
+                            <li>1碗全谷物粥（燕麦/藜麦/小米）</li>
+                            <li>1份蛋白质（豆浆/植物奶/偶尔一个鸡蛋）</li>
+                            <li>1小把坚果或种子</li>
+                            <li>1份时令水果</li>
+                        </ul>
+                        <h4>午餐示例：</h4>
+                        <ul>
+                            <li>2份蔬菜（至少1份深色绿叶蔬菜）</li>
+                            <li>1份蛋白质（豆腐/豆干/豆皮等）</li>
+                            <li>1份全谷物或薯类</li>
+                            <li>少量植物油（橄榄油/亚麻籽油）</li>
+                        </ul>
+                        <h4>晚餐示例：</h4>
+                        <ul>
+                            <li>1-2份蔬菜（多样化选择）</li>
+                            <li>1份菌类食品</li>
+                            <li>1份豆类或豆制品</li>
+                            <li>适量全谷物</li>
+                            <li>1小碟腌制发酵食品（如泡菜，改善消化）</li>
+                        </ul>
+                        <h4>零食选择：</h4>
+                        <ul>
+                            <li>新鲜水果</li>
+                            <li>少量坚果和种子</li>
+                            <li>自制营养能量球（可混合坚果、干果、燕麦）</li>
+                            <li>烤红薯</li>
+                            <li>小份水煮毛豆</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <h2 id="section3">三、循序渐进的运动方案</h2>
+
+                <p>针对不爱运动、不经常出门的状况，我设计了以下轻度递进式运动方案：</p>
+
+                <details open>
+                    <summary id="section3-1">1. 唤醒期（第1-2周）</summary>
+                    <div>
+                        <p>目标：唤醒身体，建立基础意识</p>
+                        <h4>床上/椅子锻炼（每天5-10分钟）：</h4>
+                        <ul>
+                            <li>躺在床上伸展四肢（每侧10秒）
+                                <img src="placeholder-stretch.png" alt="床上伸展图示" class="exercise-illustration">
+                                <small><em>请替换为实际动作图示</em></small>
+                            </li>
+                            <li>轻柔颈部旋转（每方向5次）
+                                <img src="placeholder-neck-rotation.png" alt="颈部旋转图示" class="exercise-illustration">
+                                <small><em>请替换为实际动作图示</em></small>
+                            </li>
+                            <li>仰卧抬腿（每侧5-8次）
+                                <img src="placeholder-leg-raise.png" alt="仰卧抬腿图示" class="exercise-illustration">
+                                <small><em>请替换为实际动作图示</em></small>
+                            </li>
+                            <li>坐姿深呼吸（5-10次）
+                                <img src="placeholder-deep-breathing.png" alt="深呼吸图示" class="exercise-illustration">
+                                <small><em>请替换为实际动作图示</em></small>
+                            </li>
+                        </ul>
+                        <h4>生活微运动：</h4>
+                        <ul>
+                            <li>看视频时站立5分钟</li>
+                            <li>喝水时轻微踮脚尖（10-15次）</li>
+                            <li>使用手机时换手和姿势</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section3-2">2. 启动期（第3-4周）</summary>
+                    <div>
+                        <p>目标：逐步增加活动量，感受身体变化</p>
+                        <h4>轻度室内运动（每天10-15分钟）：</h4>
+                        <ul>
+                            <li>轻度椅子辅助深蹲（8-10次）</li>
+                            <li>靠墙俯卧撑（5-8次）</li>
+                            <li>原地踏步（1分钟×3组）</li>
+                            <li>简单瑜伽拉伸（5分钟）</li>
+                        </ul>
+                        <h4>生活活动提升：</h4>
+                        <ul>
+                            <li>室内定时走动（每小时起身走动3-5分钟）</li>
+                            <li>做家务时有意识地加大动作幅度</li>
+                            <li>尝试站立办公/阅读（15-20分钟）</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section3-3">3. 发展期（第5-8周）</summary>
+                    <div>
+                        <p>目标：形成基本运动习惯，提升身体素质</p>
+                        <h4>结构化室内锻炼（每天15-20分钟）：</h4>
+                        <ul>
+                            <li>简单的力量训练（如靠墙深蹲、改良式俯卧撑）</li>
+                            <li>核心训练（简易平板支撑，开始10秒，逐渐增加）</li>
+                            <li>柔韧性训练（基础瑜伽动作）</li>
+                            <li>呼吸与冥想（5分钟）</li>
+                        </ul>
+                        <h4>生活方式融入：</h4>
+                        <ul>
+                            <li>考虑购买简易室内健身器材（如弹力带、小哑铃）</li>
+                            <li>尝试跟随线上轻度运动视频（如床边/椅子辅助运动）</li>
+                            <li>建立固定的运动时间（如看喜欢的电视节目前）</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section3-4">4. 进阶期（第9-12周）</summary>
+                    <div>
+                        <p>目标：稳定运动习惯，开始享受运动带来的积极变化</p>
+                        <h4>多元化室内锻炼（每天20-30分钟）：</h4>
+                        <ul>
+                            <li>简单的HIIT训练（高强度间歇，适合体能提升）</li>
+                            <li>力量与柔韧性结合训练</li>
+                            <li>尝试舞蹈或节奏性运动</li>
+                            <li>放松与伸展（结束时）</li>
+                        </ul>
+                        <h4>户外尝试（天气好时）：</h4>
+                        <ul>
+                            <li>短时间的户外散步（从5-10分钟开始）</li>
+                            <li>早晨阳台晒太阳做简单活动</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <h2 id="section4">四、改善睡眠与作息方案</h2>
+
+                <details open>
+                    <summary id="section4-1">1. 循序渐进调整睡眠时间</summary>
+                    <div>
+                        <ul>
+                            <li><strong>第1周</strong>：每天睡前时间提前15分钟</li>
+                            <li><strong>第2-3周</strong>：再提前15分钟（累计30分钟）</li>
+                            <li><strong>第4-6周</strong>：继续提前，直至理想的睡眠时间（如23:00）</li>
+                            <li><strong>关键点</strong>：即使睡得晚，也尽量保持固定的起床时间，帮助生物钟调整</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section4-2">2. 创建理想睡眠环境</summary>
+                    <div>
+                        <ul>
+                            <li>调暗或关闭卧室灯光，使用窗帘减少外部光线干扰</li>
+                            <li>保持适宜的室温（18-22℃为宜）</li>
+                            <li>减少噪音干扰（考虑使用白噪音或耳塞）</li>
+                            <li>确保床铺舒适度，如有需要更换合适的枕头</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section4-3">3. 建立睡前放松仪式</summary>
+                    <div>
+                        <ul>
+                            <li>睡前1小时关闭电子设备（或使用蓝光滤镜）</li>
+                            <li>进行轻松活动：听轻柔音乐、读纸质书、写日记</li>
+                            <li>尝试简单的放松技巧：深呼吸、渐进式肌肉放松</li>
+                            <li>睡前泡脚（40-42℃温水，10-15分钟）</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section4-4">4. 调整日间活动以促进夜间睡眠</summary>
+                    <div>
+                        <ul>
+                            <li>早晨接触自然光（即使在室内，也尽量打开窗帘）</li>
+                            <li>避免午后咖啡因摄入（咖啡、茶、巧克力）</li>
+                            <li>午间如需休息，控制在20-30分钟内</li>
+                            <li>傍晚适度活动，但避免睡前2小时进行剧烈运动</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <h2 id="section5">五、营养补充剂建议</h2>
+
+                <p>对于素食者，特别是营养不良的情况，合理的补充剂可以加速营养状态的恢复。</p>
+
+                <details open>
+                    <summary id="section5-1">1. 基础补充剂（优先级高）</summary>
+                    <div>
+                        <h4>维生素B12：</h4>
+                        <ul>
+                            <li><strong>剂量</strong>：每天2.4-10μg</li>
+                            <li><strong>形式</strong>：口服或舌下含服片剂</li>
+                            <li><strong>说明</strong>：素食者几乎必须补充，可选择甲钴胺形式</li>
+                        </ul>
+                        <h4>复合维生素与矿物质：</h4>
+                        <ul>
+                            <li><strong>特点</strong>：选择专为素食者设计的配方</li>
+                            <li><strong>关注</strong>：确保含有足量的铁、锌、钙和维生素D</li>
+                            <li><strong>建议</strong>：早餐后服用，提高吸收率</li>
+                        </ul>
+                        <h4>藻油Omega-3（DHA/EPA）：</h4>
+                        <ul>
+                            <li><strong>剂量</strong>：每天250-500mg DHA+EPA</li>
+                            <li><strong>说明</strong>：纯植物来源，支持神经系统和心脏健康</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section5-2">2. 针对性补充剂（根据需要）</summary>
+                    <div>
+                        <h4>铁补充剂：</h4>
+                        <ul>
+                            <li><strong>适用情况</strong>：月经量大或有贫血症状</li>
+                            <li><strong>建议剂型</strong>：低刺激性铁（如甘氨酸亚铁、富马酸亚铁）</li>
+                            <li><strong>服用技巧</strong>：与维生素C一起服用，避免与钙同时服用</li>
+                        </ul>
+                        <h4>钙+维生素D：</h4>
+                        <ul>
+                            <li><strong>适用情况</strong>：少日照，骨骼健康需求</li>
+                            <li><strong>剂量</strong>：钙600-800mg/天，维生素D 800-1000IU/天</li>
+                            <li><strong>建议</strong>：分次服用，提高吸收率</li>
+                        </ul>
+                        <h4>蛋白质粉：</h4>
+                        <ul>
+                            <li><strong>类型</strong>：豌豆蛋白、大豆蛋白、混合植物蛋白</li>
+                            <li><strong>使用方式</strong>：早餐或运动后添加到饮品中</li>
+                            <li><strong>建议</strong>：选择无添加糖和人工成分的产品</li>
+                        </ul>
+                        <h4>益生菌：</h4>
+                        <ul>
+                            <li><strong>作用</strong>：改善消化功能，增强免疫力</li>
+                            <li><strong>选择</strong>：多菌株配方，含有至少10亿CFU</li>
+                            <li><strong>服用时间</strong>：早餐前或晚上睡前</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section5-3">3. 辅助调理补充品（可选）</summary>
+                    <div>
+                        <h4>姜黄素：</h4>
+                        <ul>
+                            <li><strong>作用</strong>：抗炎，支持消化健康</li>
+                            <li><strong>建议</strong>：与黑胡椒一起服用，提高吸收率</li>
+                        </ul>
+                        <h4>维生素C：</h4>
+                        <ul>
+                            <li><strong>作用</strong>：增强免疫力，促进铁吸收</li>
+                            <li><strong>剂量</strong>：250-500mg/天</li>
+                            <li><strong>服用</strong>：分次服用，减少胃部不适</li>
+                        </ul>
+                        <h4>镁：</h4>
+                        <ul>
+                            <li><strong>作用</strong>：改善睡眠质量，减轻压力</li>
+                            <li><strong>形式</strong>：甘氨酸镁或柠檬酸镁</li>
+                            <li><strong>服用时间</strong>：晚餐后或睡前</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <h2 id="section6">六、实用小贴士与养成策略</h2>
+
+                <details open>
+                    <summary id="section6-1">1. 建立可持续的小习惯</summary>
+                    <div>
+                        <ul>
+                            <li><strong>时间锚点法</strong>：将新习惯与已有的日常活动绑定（如刷牙后吃早餐）</li>
+                            <li><strong>最小阻力法</strong>：降低健康行为的执行难度（如准备即食的健康零食）</li>
+                            <li><strong>奖励系统</strong>：为自己设立小奖励，庆祝每一个进步</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section6-2">2. 环境调整策略</summary>
+                    <div>
+                        <ul>
+                            <li><strong>食物可见性</strong>：将健康食物放在显眼易取处</li>
+                            <li><strong>运动便利性</strong>：把简单的运动装备放在容易看见的地方</li>
+                            <li><strong>睡眠环境优化</strong>：调整卧室布置，创造舒适的睡眠空间</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section6-3">3. 心理支持和自我鼓励</summary>
+                    <div>
+                        <ul>
+                            <li><strong>设定现实可行的目标</strong>：从小目标开始，逐步提升</li>
+                            <li><strong>自我对话改善</strong>：用正面语言代替负面自我评价</li>
+                            <li><strong>进度记录</strong>：使用日记或app记录每日进步，不论大小</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section6-4">4. 常见挑战应对策略</summary>
+                    <div>
+                        <h4>低能量日的应对：</h4>
+                        <ul>
+                            <li>允许自己有"低标准"的日子，但仍坚持做一点点</li>
+                            <li>调整当天计划，选择更轻松的活动</li>
+                            <li>提醒自己这是暂时的，不要因一天中断而放弃整个计划</li>
+                        </ul>
+                        <h4>饮食渴望管理：</h4>
+                        <ul>
+                            <li>识别情绪性进食的触发因素</li>
+                            <li>准备健康的替代选择</li>
+                            <li>学习延迟满足技巧（如"等15分钟再决定"）</li>
+                        </ul>
+                        <h4>持续动力维持：</h4>
+                        <ul>
+                            <li>寻找健康同伴或线上社区支持</li>
+                            <li>定期回顾进步和收获</li>
+                            <li>探索新的健康活动，保持新鲜感</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <h2 id="section7">七、具体一周食谱示例</h2>
+
+                <details open>
+                    <summary id="section7-1">第一周简易素食食谱（适合初始阶段）</summary>
+                    <div>
+                        <table class="recipe-table">
+                            <thead>
+                                <tr>
+                                    <th>日期</th>
+                                    <th>早餐</th>
+                                    <th>午餐</th>
+                                    <th>晚餐</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="日期">周一</td>
+                                    <td data-label="早餐">温热豆浆1杯，全麦面包1片，少量坚果（5-6颗杏仁）</td>
+                                    <td data-label="午餐">青菜豆腐汤，糙米饭半碗，炒西兰花</td>
+                                    <td data-label="晚餐">菌菇炒青菜，杂粮粥，拌豆腐</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="日期">周二</td>
+                                    <td data-label="早餐">燕麦片泡植物奶，加少量干果和蜂蜜</td>
+                                    <td data-label="午餐">素菜炒面（富含多种蔬菜），水果一份</td>
+                                    <td data-label="晚餐">茄子炖豆腐，糙米饭，炒菠菜</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="日期">周三</td>
+                                    <td data-label="早餐">煮鸡蛋一个（如可食用），全麦吐司，新鲜水果</td>
+                                    <td data-label="午餐">藜麦蔬菜沙拉（加入豆腐丁和坚果增加蛋白质）</td>
+                                    <td data-label="晚餐">蘑菇炖蔬菜，小米粥，凉拌芹菜</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="日期">周四</td>
+                                    <td data-label="早餐">香蕉燕麦奶昔（燕麦、香蕉、植物奶、少许坚果）</td>
+                                    <td data-label="午餐">素食饺子（豆腐、蔬菜馅），凉拌黄瓜</td>
+                                    <td data-label="晚餐">紫菜豆腐汤，杂粮饭，炒青菜</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="日期">周五</td>
+                                    <td data-label="早餐">全麦粥配黑芝麻和核桃</td>
+                                    <td data-label="午餐">素食炒饭（加入豌豆、胡萝卜、豆干丁）</td>
+                                    <td data-label="晚餐">番茄豆腐炖蘑菇，糙米饭，清炒小白菜</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="日期">周六</td>
+                                    <td data-label="早餐">鸡蛋一个（如可食用），蔬菜粥</td>
+                                    <td data-label="午餐">素食拌面（多种蔬菜与豆制品）</td>
+                                    <td data-label="晚餐">素食火锅（各式蔬菜、豆制品、菌类）</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="日期">周日</td>
+                                    <td data-label="早餐">南瓜粥配少量坚果</td>
+                                    <td data-label="午餐">素食春卷，蔬菜沙拉</td>
+                                    <td data-label="晚餐">石锅拌饭（糙米、蔬菜、鸡蛋丝）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section7-2">实用小零食选择：</summary>
+                    <div>
+                        <ul>
+                            <li>现切水果拼盘</li>
+                            <li>无糖酸奶配少量坚果（如可食用）</li>
+                            <li>自制营养能量球（燕麦、坚果、蜂蜜）</li>
+                            <li>烤红薯</li>
+                            <li>小份水煮毛豆</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <h2 id="section8">八、长期维持计划（2-3个月后）</h2>
+
+                <details open>
+                    <summary id="section8-1">1. 定期评估与调整</summary>
+                    <div>
+                        <ul>
+                            <li>每月进行一次简单的自我健康评估（精力、睡眠、消化状况）</li>
+                            <li>根据进步情况调整运动和饮食方案</li>
+                            <li>考虑每半年进行一次全面体检，了解关键指标变化</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section8-2">2. 习惯进阶与扩展</summary>
+                    <div>
+                        <ul>
+                            <li>探索更多健康素食食谱，增加饮食多样性</li>
+                            <li>尝试更多形式的运动，找到真正喜欢的活动</li>
+                            <li>学习压力管理和心理健康维护技巧</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section8-3">3. 社交支持的重要性</summary>
+                    <div>
+                        <ul>
+                            <li>寻找有相似健康目标的朋友或线上社群</li>
+                            <li>分享进步和挑战，互相支持和学习</li>
+                            <li>考虑邀请朋友一起尝试健康活动</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary id="section8-4">4. 长期健康愿景</summary>
+                    <div>
+                        <ul>
+                            <li>设定长期的健康和生活质量目标，而非仅关注短期改变</li>
+                            <li>关注内在变化（如精力提升、情绪改善）而非仅外在变化</li>
+                            <li>培养健康生活方式的享受感和成就感</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <h2 id="section9">总结</h2>
+
+                <p>健康是一个循序渐进的过程，尤其对于身体底子不好的人来说，稳定而持续的小步改变比短期的剧烈调整更有效。这份方案关注全面性（饮食、运动、睡眠、营养补充）和可执行性，提供了清晰的阶段目标和具体实施策略。</p>
+
+                <p>最重要的是保持耐心和自我关爱，欣赏每一个进步，接受偶尔的失败。身体的恢复和健康的建立是一段旅程，而非目的地。通过这些循序渐进的改变，相信身体状况会逐步得到改善，能量和活力会逐渐恢复。</p>
+
+                <p>祝您健康之旅愉快！</p>
+            </div>
+
+            <div id="firstWeekPlanView" class="first-week-plan">
+                <h1 style="color: var(--primary-green);">第一周计划执行页面</h1>
+                <p style="text-align: center; margin-bottom: 30px;">在这里跟踪和管理您第一周的健康任务！</p>
+
+                <div class="day-navigation">
+                    <button id="dayBtn-mon" data-day="monday">周一</button>
+                    <button id="dayBtn-tue" data-day="tuesday">周二</button>
+                    <button id="dayBtn-wed" data-day="wednesday">周三</button>
+                    <button id="dayBtn-thu" data-day="thursday">周四</button>
+                    <button id="dayBtn-fri" data-day="friday">周五</button>
+                    <button id="dayBtn-sat" data-day="saturday">周六</button>
+                    <button id="dayBtn-sun" data-day="sunday">周日</button>
+                </div>
+
+                <div id="dailyPlanContent" class="daily-plan">
+                    </div>
+
+                <div class="weekly-progress-summary">
+                    <h3>第一周整体进度</h3>
+                    <div class="progress-bar-container">
+                        <div id="weeklyProgressBar" class="progress-bar" style="width: 0%;">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="#top" class="back-to-top" id="backToTopBtn">↑</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+            const mainContentWrapper = document.querySelector('.main-content-wrapper');
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            const fullPlanBtn = document.getElementById('fullPlanBtn');
+            const firstWeekBtn = document.getElementById('firstWeekBtn');
+            const fullPlanView = document.getElementById('fullPlanView');
+            const firstWeekPlanView = document.getElementById('firstWeekPlanView');
+            const dayNavigationButtons = document.querySelectorAll('.day-navigation button');
+            const dailyPlanContent = document.getElementById('dailyPlanContent');
+            const weeklyProgressBar = document.getElementById('weeklyProgressBar');
+
+            // --- 全局功能：侧边栏导航和返回顶部 ---
+            const updateActiveSidebarLink = () => {
+                let currentActiveSectionId = '';
+                let minDistance = Infinity;
+
+                // For full plan view
+                if (!firstWeekPlanView.style.display || firstWeekPlanView.style.display === 'none') {
+                    document.querySelectorAll('.main-content h2[id], .main-content h3[id]').forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        // Consider section active if its top is within 50% of viewport and it's visible
+                        if (rect.top <= mainContentWrapper.clientHeight / 2 && rect.bottom >= 0) {
+                            // Find the section whose top is closest to the viewport top but not negative
+                            const distance = Math.abs(rect.top);
+                            if (distance < minDistance) {
+                                minDistance = distance;
+                                currentActiveSectionId = section.id;
+                            }
+                        }
+                    });
+                }
+
+
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === currentActiveSectionId) {
+                        link.classList.add('active');
+                        // Also activate parent if it's a sub-link
+                        const parentUl = link.closest('ul');
+                        if (parentUl && parentUl.previousElementSibling && parentUl.previousElementSibling.tagName === 'A') {
+                            parentUl.previousElementSibling.classList.add('active');
+                        }
+                    }
+                });
+            };
+
+            const toggleBackToTopButton = () => {
+                if (mainContentWrapper.scrollTop > 300) {
+                    backToTopBtn.style.display = 'flex';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            };
+
+            // Initial calls
+            updateActiveSidebarLink();
+            toggleBackToTopButton();
+
+            // Event listeners
+            mainContentWrapper.addEventListener('scroll', () => {
+                updateActiveSidebarLink();
+                toggleBackToTopButton();
+            });
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        // Smooth scroll
+                        const headerOffset = 80; // Adjust for sticky header/padding if any
+                        const elementPosition = targetElement.getBoundingClientRect().top + mainContentWrapper.scrollTop;
+                        const offsetPosition = elementPosition - headerOffset;
+
+                        mainContentWrapper.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // Update active class immediately after click
+                        sidebarLinks.forEach(l => l.classList.remove('active'));
+                        let currentLink = this;
+                        while(currentLink && currentLink.tagName === 'A') {
+                            currentLink.classList.add('active');
+                            currentLink = currentLink.closest('ul')?.previousElementSibling;
+                        }
+                    }
+                });
+            });
+
+            // --- 视图切换功能 ---
+            const showFullPlanView = () => {
+                fullPlanView.style.display = 'block';
+                firstWeekPlanView.style.display = 'none';
+                fullPlanBtn.classList.add('active');
+                firstWeekBtn.classList.remove('active');
+                updateActiveSidebarLink(); // Re-evaluate active link for full plan
+            };
+
+            const showFirstWeekPlanView = () => {
+                fullPlanView.style.display = 'none';
+                firstWeekPlanView.style.display = 'block';
+                fullPlanBtn.classList.remove('active');
+                firstWeekBtn.classList.add('active');
+                loadDailyPlan('monday'); // Load Monday's plan by default
+            };
+
+            fullPlanBtn.addEventListener('click', showFullPlanView);
+            firstWeekBtn.addEventListener('click', showFirstWeekPlanView);
+
+            // --- 第一周计划执行页面逻辑 ---
+
+            // Data for tasks (expanded from markdown)
+            const firstWeekTasks = {
+                monday: {
+                    title: "周一：健康新开始",
+                    tasks: [
+                        { id: 'mon-diet-1', category: '饮食', text: '温热豆浆1杯，全麦面包1片，少量坚果（5-6颗杏仁）' },
+                        { id: 'mon-diet-2', category: '饮食', text: '青菜豆腐汤，糙米饭半碗，炒西兰花' },
+                        { id: 'mon-diet-3', category: '饮食', text: '菌菇炒青菜，杂粮粥，拌豆腐' },
+                        { id: 'mon-sleep-1', category: '作息', text: '睡前1小时放下手机和电子设备' },
+                        { id: 'mon-sleep-2', category: '作息', text: '尝试将睡觉时间提前15分钟（例如：12:45睡）' },
+                        { id: 'mon-suppl-1', category: '补剂', text: '补充维生素B12（2.4μg）' },
+                        { id: 'mon-suppl-2', category: '补剂', text: '服用复合维生素（含铁、钙、维生素D）' },
+                        { id: 'mon-exercise-1', category: '运动', text: '5分钟轻度拉伸或床上瑜伽' },
+                        { id: 'mon-exercise-2', category: '运动', text: '在家中步行，如看视频时站立或走动' }
+                    ]
+                },
+                tuesday: {
+                    title: "周二：习惯巩固",
+                    tasks: [
+                        { id: 'tue-diet-1', category: '饮食', text: '燕麦片泡植物奶，加少量干果和蜂蜜' },
+                        { id: 'tue-diet-2', category: '饮食', text: '素菜炒面（富含多种蔬菜），水果一份' },
+                        { id: 'tue-diet-3', category: '饮食', text: '茄子炖豆腐，糙米饭，炒菠菜' },
+                        { id: 'tue-sleep-1', category: '作息', text: '睡前1小时放下手机和电子设备' },
+                        { id: 'tue-sleep-2', category: '作息', text: '尝试将睡觉时间提前15分钟' },
+                        { id: 'tue-suppl-1', category: '补剂', text: '补充维生素B12（2.4μg）' },
+                        { id: 'tue-suppl-2', category: '补剂', text: '服用复合维生素（含铁、钙、维生素D）' },
+                        { id: 'tue-exercise-1', category: '运动', text: '5分钟轻度拉伸或床上瑜伽' },
+                        { id: 'tue-exercise-2', category: '运动', text: '在家中步行，如看视频时站立或走动' }
+                    ]
+                },
+                wednesday: {
+                    title: "周三：小步前进",
+                    tasks: [
+                        { id: 'wed-diet-1', category: '饮食', text: '煮鸡蛋一个（如可食用），全麦吐司，新鲜水果' },
+                        { id: 'wed-diet-2', category: '饮食', text: '藜麦蔬菜沙拉（加入豆腐丁和坚果增加蛋白质）' },
+                        { id: 'wed-diet-3', category: '饮食', text: '蘑菇炖蔬菜，小米粥，凉拌芹菜' },
+                        { id: 'wed-sleep-1', category: '作息', text: '睡前1小时放下手机和电子设备' },
+                        { id: 'wed-sleep-2', category: '作息', text: '尝试将睡觉时间提前15分钟' },
+                        { id: 'wed-suppl-1', category: '补剂', text: '补充维生素B12（2.4μg）' },
+                        { id: 'wed-suppl-2', category: '补剂', text: '服用复合维生素（含铁、钙、维生素D）' },
+                        { id: 'wed-exercise-1', category: '运动', text: '5分钟轻度拉伸或床上瑜伽' },
+                        { id: 'wed-exercise-2', category: '运动', text: '在家中步行，如看视频时站立或走动' }
+                    ]
+                },
+                thursday: {
+                    title: "周四：持续改进",
+                    tasks: [
+                        { id: 'thu-diet-1', category: '饮食', text: '香蕉燕麦奶昔（燕麦、香蕉、植物奶、少许坚果）' },
+                        { id: 'thu-diet-2', category: '饮食', text: '素食饺子（豆腐、蔬菜馅），凉拌黄瓜' },
+                        { id: 'thu-diet-3', category: '饮食', text: '紫菜豆腐汤，杂粮饭，炒青菜' },
+                        { id: 'thu-sleep-1', category: '作息', text: '睡前1小时放下手机和电子设备' },
+                        { id: 'thu-sleep-2', category: '作息', text: '尝试将睡觉时间提前15分钟' },
+                        { id: 'thu-suppl-1', category: '补剂', text: '补充维生素B12（2.4μg）' },
+                        { id: 'thu-suppl-2', category: '补剂', text: '服用复合维生素（含铁、钙、维生素D）' },
+                        { id: 'thu-exercise-1', category: '运动', text: '5分钟轻度拉伸或床上瑜伽' },
+                        { id: 'thu-exercise-2', category: '运动', text: '在家中步行，如看视频时站立或走动' }
+                    ]
+                },
+                friday: {
+                    title: "周五：迎接周末",
+                    tasks: [
+                        { id: 'fri-diet-1', category: '饮食', text: '全麦粥配黑芝麻和核桃' },
+                        { id: 'fri-diet-2', category: '饮食', text: '素食炒饭（加入豌豆、胡萝卜、豆干丁）' },
+                        { id: 'fri-diet-3', category: '饮食', text: '番茄豆腐炖蘑菇，糙米饭，清炒小白菜' },
+                        { id: 'fri-sleep-1', category: '作息', text: '睡前1小时放下手机和电子设备' },
+                        { id: 'fri-sleep-2', category: '作息', text: '尝试将睡觉时间提前15分钟' },
+                        { id: 'fri-suppl-1', category: '补剂', text: '补充维生素B12（2.4μg）' },
+                        { id: 'fri-suppl-2', category: '补剂', text: '服用复合维生素（含铁、钙、维生素D）' },
+                        { id: 'fri-exercise-1', category: '运动', text: '5分钟轻度拉伸或床上瑜伽' },
+                        { id: 'fri-exercise-2', category: '运动', text: '在家中步行，如看视频时站立或走动' }
+                    ]
+                },
+                saturday: {
+                    title: "周六：轻松实践",
+                    tasks: [
+                        { id: 'sat-diet-1', category: '饮食', text: '鸡蛋一个（如可食用），蔬菜粥' },
+                        { id: 'sat-diet-2', category: '饮食', text: '素食拌面（多种蔬菜与豆制品）' },
+                        { id: 'sat-diet-3', category: '饮食', text: '素食火锅（各式蔬菜、豆制品、菌类）' },
+                        { id: 'sat-sleep-1', category: '作息', text: '睡前1小时放下手机和电子设备' },
+                        { id: 'sat-sleep-2', category: '作息', text: '尝试将睡觉时间提前15分钟' },
+                        { id: 'sat-suppl-1', category: '补剂', text: '补充维生素B12（2.4μg）' },
+                        { id: 'sat-suppl-2', category: '补剂', text: '服用复合维生素（含铁、钙、维生素D）' },
+                        { id: 'sat-exercise-1', category: '运动', text: '5分钟轻度拉伸或床上瑜伽' },
+                        { id: 'sat-exercise-2', category: '运动', text: '在家中步行，如看视频时站立或走动' }
+                    ]
+                },
+                sunday: {
+                    title: "周日：总结与展望",
+                    tasks: [
+                        { id: 'sun-diet-1', category: '饮食', text: '南瓜粥配少量坚果' },
+                        { id: 'sun-diet-2', category: '饮食', text: '素食春卷，蔬菜沙拉' },
+                        { id: 'sun-diet-3', category: '饮食', text: '石锅拌饭（糙米、蔬菜、鸡蛋丝）' },
+                        { id: 'sun-sleep-1', category: '作息', text: '睡前1小时放下手机和电子设备' },
+                        { id: 'sun-sleep-2', category: '作息', text: '尝试将睡觉时间提前15分钟' },
+                        { id: 'sun-suppl-1', category: '补剂', text: '补充维生素B12（2.4μg）' },
+                        { id: 'sun-suppl-2', category: '补剂', text: '服用复合维生素（含铁、钙、维生素D）' },
+                        { id: 'sun-exercise-1', category: '运动', text: '5分钟轻度拉伸或床上瑜伽' },
+                        { id: 'sun-exercise-2', category: '运动', text: '在家中步行，如看视频时站立或走动' }
+                    ]
+                }
+            };
+
+            const saveTaskStatus = (day, taskId, isChecked) => {
+                const status = JSON.parse(localStorage.getItem('firstWeekTasksStatus') || '{}');
+                if (!status[day]) {
+                    status[day] = {};
+                }
+                status[day][taskId] = isChecked;
+                localStorage.setItem('firstWeekTasksStatus', JSON.stringify(status));
+                updateWeeklyProgress();
+            };
+
+            const loadTaskStatus = (day, taskId) => {
+                const status = JSON.parse(localStorage.getItem('firstWeekTasksStatus') || '{}');
+                return status[day]?.[taskId] || false;
+            };
+
+            const updateDailyProgress = (day) => {
+                const currentDayTasks = firstWeekTasks[day].tasks;
+                const totalTasks = currentDayTasks.length;
+                let completedTasks = 0;
+                currentDayTasks.forEach(task => {
+                    if (loadTaskStatus(day, task.id)) {
+                        completedTasks++;
+                    }
+                });
+                const percentage = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+                const progressBar = document.querySelector('.daily-plan #dailyProgressBar');
+                if (progressBar) {
+                    progressBar.style.width = percentage + '%';
+                    progressBar.textContent = percentage + '% 完成';
+                }
+            };
+
+            const updateWeeklyProgress = () => {
+                let totalWeekTasks = 0;
+                let completedWeekTasks = 0;
+
+                Object.keys(firstWeekTasks).forEach(day => {
+                    totalWeekTasks += firstWeekTasks[day].tasks.length;
+                    firstWeekTasks[day].tasks.forEach(task => {
+                        if (loadTaskStatus(day, task.id)) {
+                            completedWeekTasks++;
+                        }
+                    });
+                });
+
+                const weeklyPercentage = totalWeekTasks > 0 ? Math.round((completedWeekTasks / totalWeekTasks) * 100) : 0;
+                weeklyProgressBar.style.width = weeklyPercentage + '%';
+                weeklyProgressBar.textContent = weeklyPercentage + '% 完成';
+            };
+
+
+            const loadDailyPlan = (day) => {
+                const data = firstWeekTasks[day];
+                if (!data) {
+                    dailyPlanContent.innerHTML = `<p style="text-align: center;">没有找到 ${day} 的计划。</p>`;
+                    return;
+                }
+
+                let html = `<h3>${data.title}</h3>`;
+                html += `<h4>当日进度</h4><div class="progress-bar-container"><div id="dailyProgressBar" class="progress-bar" style="width: 0%;">0%</div></div>`;
+                html += `<div class="task-list">`;
+
+                const categories = ['饮食', '作息', '补剂', '运动'];
+                categories.forEach(category => {
+                    const categorizedTasks = data.tasks.filter(task => task.category === category);
+                    if (categorizedTasks.length > 0) {
+                        html += `<h4>${category}任务：</h4><ul>`;
+                        categorizedTasks.forEach(task => {
+                            const isChecked = loadTaskStatus(day, task.id);
+                            html += `<li>
+                                <label for="${task.id}" class="${isChecked ? 'completed' : ''}">
+                                    <input type="checkbox" id="${task.id}" data-day="${day}" data-task-id="${task.id}" ${isChecked ? 'checked' : ''}>
+                                    ${task.text}
+                                </label>
+                            </li>`;
+                        });
+                        html += `</ul>`;
+                    }
+                });
+
+                html += `</div>`;
+                dailyPlanContent.innerHTML = html;
+
+                // Add event listeners for checkboxes
+                dailyPlanContent.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.addEventListener('change', (e) => {
+                        const currentDay = e.target.dataset.day;
+                        const taskId = e.target.dataset.taskId;
+                        const isChecked = e.target.checked;
+                        saveTaskStatus(currentDay, taskId, isChecked);
+                        e.target.closest('label').classList.toggle('completed', isChecked);
+                        updateDailyProgress(currentDay);
+                    });
+                });
+
+                updateDailyProgress(day); // Initial update for the loaded day
+                updateWeeklyProgress(); // Update overall progress whenever a day is loaded/changed
+            };
+
+            dayNavigationButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    dayNavigationButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    const day = this.dataset.day;
+                    loadDailyPlan(day);
+                });
+            });
+
+            // Set today's day as active by default if within Mon-Sun
+            const today = new Date().getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+            const daysMap = {
+                1: 'monday', 2: 'tuesday', 3: 'wednesday', 4: 'thursday', 5: 'friday', 6: 'saturday', 0: 'sunday'
+            };
+            const currentDayString = daysMap[today];
+            const currentDayButton = document.querySelector(`.day-navigation button[data-day="${currentDayString}"]`);
+            if (currentDayButton) {
+                currentDayButton.click(); // Simulate click to load today's plan
+            } else {
+                // Default to Monday if outside Mon-Sun or no matching button
+                document.getElementById('dayBtn-mon').click();
+            }
+
+            // Initial view setup (show full plan by default)
+            showFullPlanView();
+        });
+    </script>
+</body>
+</html>
