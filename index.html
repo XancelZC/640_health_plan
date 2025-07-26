@@ -54,6 +54,7 @@
             height: 100vh;
             overflow-y: auto;
             box-shadow: 2px 0 8px var(--shadow-light);
+            z-index: 999; /* Ensure sidebar is above content for desktop sticky */
         }
 
         .sidebar h3 {
@@ -116,7 +117,7 @@
             flex-grow: 1;
             padding: 30px 40px;
             overflow-y: auto;
-            max-height: 100vh; /* Make sure main content scrolls */
+            /* max-height: 100vh; */ /* Removed for better mobile scrolling */
         }
 
         .view-toggle {
@@ -392,7 +393,7 @@
 
         .task-list label {
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* Align checkbox with text top */
             margin-bottom: 12px;
             font-size: 1.05em;
             cursor: pointer;
@@ -404,6 +405,8 @@
             min-height: 20px;
             accent-color: var(--primary-green); /* Checkbox color */
             cursor: pointer;
+            flex-shrink: 0; /* Prevent checkbox from shrinking */
+            margin-top: 3px; /* Adjust vertical alignment if needed */
         }
 
         .task-list label.completed {
@@ -451,26 +454,66 @@
              margin-bottom: 15px;
         }
 
+        /* 移动端侧边栏的汉堡菜单 */
+        .menu-toggle {
+            display: none; /* Hidden by default, shown on mobile */
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.5em;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001; /* Above sidebar */
+            box-shadow: 0 2px 5px var(--shadow-medium);
+        }
+
+        /* 移动端侧边栏遮罩 */
+        .sidebar-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998; /* Below sidebar, above content */
+        }
+
         /* 响应式设计 */
         @media (max-width: 992px) {
             .container {
                 flex-direction: column;
-                margin: 15px;
+                margin: 0; /* Remove margin to use full width on mobile */
+                border-radius: 0; /* Remove border-radius for full width */
                 box-shadow: none; /* Simpler look on smaller screens */
             }
 
+            /* Mobile Sidebar styles */
             .sidebar {
-                width: 100%;
-                position: static;
-                height: auto;
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
+                width: 70%; /* Occupy 70% of screen width */
+                max-width: 300px; /* Limit max width */
+                position: fixed; /* Fixed position for overlay effect */
+                top: 0;
+                left: -100%; /* Initially off-screen */
+                height: 100vh;
                 padding: 20px;
-                box-shadow: 0 2px 8px var(--shadow-light);
+                border-right: none;
+                border-bottom: none; /* No bottom border for fixed sidebar */
+                transition: left 0.3s ease-in-out;
+                box-shadow: 4px 0 10px var(--shadow-medium);
+                overflow-y: auto; /* Allow scrolling within sidebar */
+            }
+
+            .sidebar.active {
+                left: 0; /* Slide in */
             }
 
             .main-content-wrapper {
-                padding: 25px;
+                padding: 25px 15px; /* Adjust padding for smaller screens */
                 max-height: none; /* Allow full height scrolling */
             }
 
@@ -515,23 +558,27 @@
 
             .recipe-table td {
                 text-align: right;
-                padding-left: 50%;
+                padding-left: 50%; /* Make space for pseudo-element label */
                 position: relative;
                 border: none;
+                padding-top: 8px; /* Add some padding to separate from label */
+                padding-bottom: 8px;
             }
 
             .recipe-table td::before {
                 content: attr(data-label);
                 position: absolute;
                 left: 0;
-                width: 45%;
+                width: 45%; /* Keep consistent width for label */
                 padding-left: 15px;
                 font-weight: bold;
                 text-align: left;
                 background-color: #f0f0f0;
                 height: 100%;
                 display: flex;
-                align-items: center;
+                align-items: center; /* Center label vertically */
+                top: 0; /* Align to top of td */
+                bottom: 0; /* Span full height of td */
             }
 
             .back-to-top {
@@ -541,11 +588,15 @@
                 height: 45px;
                 font-size: 1.8em;
             }
+
+            .menu-toggle {
+                display: block; /* Show hamburger menu on mobile */
+            }
         }
 
         @media (max-width: 600px) {
             .container {
-                margin: 10px;
+                margin: 0;
             }
             .sidebar h3 {
                 font-size: 1.4em;
@@ -555,7 +606,7 @@
                 font-size: 1em;
             }
             .main-content-wrapper {
-                padding: 20px;
+                padding: 20px 10px; /* Further reduce padding */
             }
             h1 {
                 font-size: 1.8em;
@@ -575,7 +626,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+
+        <div class="sidebar" id="sidebar">
             <h3>健康计划导航</h3>
             <ul>
                 <li><a href="#section1">一、分阶段健康改善计划</a>
@@ -640,6 +693,8 @@
                 <li><a href="#section9">总结</a></li>
             </ul>
         </div>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <div class="main-content-wrapper">
             <div class="view-toggle">
@@ -1299,20 +1354,25 @@
             const dayNavigationButtons = document.querySelectorAll('.day-navigation button');
             const dailyPlanContent = document.getElementById('dailyPlanContent');
             const weeklyProgressBar = document.getElementById('weeklyProgressBar');
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
 
             // --- 全局功能：侧边栏导航和返回顶部 ---
             const updateActiveSidebarLink = () => {
                 let currentActiveSectionId = '';
                 let minDistance = Infinity;
 
-                // For full plan view
-                if (!firstWeekPlanView.style.display || firstWeekPlanView.style.display === 'none') {
+                // Only update active link for full plan view
+                if (fullPlanView.style.display !== 'none') {
                     document.querySelectorAll('.main-content h2[id], .main-content h3[id]').forEach(section => {
                         const rect = section.getBoundingClientRect();
                         // Consider section active if its top is within 50% of viewport and it's visible
-                        if (rect.top <= mainContentWrapper.clientHeight / 2 && rect.bottom >= 0) {
-                            // Find the section whose top is closest to the viewport top but not negative
-                            const distance = Math.abs(rect.top);
+                        // Adjusted for scroll position within mainContentWrapper
+                        const sectionTopRelativeToWrapper = rect.top + mainContentWrapper.scrollTop - mainContentWrapper.getBoundingClientRect().top;
+
+                        if (sectionTopRelativeToWrapper <= mainContentWrapper.scrollTop + mainContentWrapper.clientHeight / 2 && rect.bottom >= 0) {
+                            const distance = Math.abs(sectionTopRelativeToWrapper - mainContentWrapper.scrollTop);
                             if (distance < minDistance) {
                                 minDistance = distance;
                                 currentActiveSectionId = section.id;
@@ -1321,10 +1381,10 @@
                     });
                 }
 
-
                 sidebarLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href').substring(1) === currentActiveSectionId) {
+                    const linkTargetId = link.getAttribute('href').substring(1);
+                    if (linkTargetId === currentActiveSectionId) {
                         link.classList.add('active');
                         // Also activate parent if it's a sub-link
                         const parentUl = link.closest('ul');
@@ -1359,6 +1419,12 @@
                     const targetId = this.getAttribute('href').substring(1);
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
+                        // Close sidebar on link click for mobile
+                        if (window.innerWidth <= 992) {
+                            sidebar.classList.remove('active');
+                            sidebarOverlay.style.display = 'none';
+                        }
+
                         // Smooth scroll
                         const headerOffset = 80; // Adjust for sticky header/padding if any
                         const elementPosition = targetElement.getBoundingClientRect().top + mainContentWrapper.scrollTop;
@@ -1370,14 +1436,26 @@
                         });
 
                         // Update active class immediately after click
-                        sidebarLinks.forEach(l => l.classList.remove('active'));
-                        let currentLink = this;
-                        while(currentLink && currentLink.tagName === 'A') {
-                            currentLink.classList.add('active');
-                            currentLink = currentLink.closest('ul')?.previousElementSibling;
-                        }
+                        // This logic needs to be a bit smarter if main sections are directly clickable too
+                        // For simplicity, re-run updateActiveSidebarLink after scroll finishes or after a slight delay
+                        setTimeout(updateActiveSidebarLink, 400); // Give scroll some time
                     }
                 });
+            });
+
+            // --- 移动端侧边栏切换 ---
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+                if (sidebar.classList.contains('active')) {
+                    sidebarOverlay.style.display = 'block';
+                } else {
+                    sidebarOverlay.style.display = 'none';
+                }
+            });
+
+            sidebarOverlay.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                sidebarOverlay.style.display = 'none';
             });
 
             // --- 视图切换功能 ---
@@ -1387,6 +1465,7 @@
                 fullPlanBtn.classList.add('active');
                 firstWeekBtn.classList.remove('active');
                 updateActiveSidebarLink(); // Re-evaluate active link for full plan
+                mainContentWrapper.scrollTop = 0; // Scroll to top when switching views
             };
 
             const showFirstWeekPlanView = () => {
@@ -1394,7 +1473,8 @@
                 firstWeekPlanView.style.display = 'block';
                 fullPlanBtn.classList.remove('active');
                 firstWeekBtn.classList.add('active');
-                loadDailyPlan('monday'); // Load Monday's plan by default
+                loadDailyPlan(getCurrentDayString()); // Load today's or Monday's plan by default
+                mainContentWrapper.scrollTop = 0; // Scroll to top when switching views
             };
 
             fullPlanBtn.addEventListener('click', showFullPlanView);
@@ -1603,6 +1683,14 @@
                 updateWeeklyProgress(); // Update overall progress whenever a day is loaded/changed
             };
 
+            const getCurrentDayString = () => {
+                const today = new Date().getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+                const daysMap = {
+                    1: 'monday', 2: 'tuesday', 3: 'wednesday', 4: 'thursday', 5: 'friday', 6: 'saturday', 0: 'sunday'
+                };
+                return daysMap[today];
+            };
+
             dayNavigationButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     dayNavigationButtons.forEach(btn => btn.classList.remove('active'));
@@ -1612,18 +1700,13 @@
                 });
             });
 
-            // Set today's day as active by default if within Mon-Sun
-            const today = new Date().getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
-            const daysMap = {
-                1: 'monday', 2: 'tuesday', 3: 'wednesday', 4: 'thursday', 5: 'friday', 6: 'saturday', 0: 'sunday'
-            };
-            const currentDayString = daysMap[today];
-            const currentDayButton = document.querySelector(`.day-navigation button[data-day="${currentDayString}"]`);
-            if (currentDayButton) {
-                currentDayButton.click(); // Simulate click to load today's plan
+            // Set today's day as active by default if within Mon-Sun, otherwise default to Monday
+            const initialDay = getCurrentDayString();
+            const initialDayButton = document.querySelector(`.day-navigation button[data-day="${initialDay}"]`);
+            if (initialDayButton) {
+                initialDayButton.click(); // Simulate click to load today's plan
             } else {
-                // Default to Monday if outside Mon-Sun or no matching button
-                document.getElementById('dayBtn-mon').click();
+                document.getElementById('dayBtn-mon').click(); // Default to Monday
             }
 
             // Initial view setup (show full plan by default)
